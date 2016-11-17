@@ -9,7 +9,7 @@
 
 <mvc:annotation-driven/>
 
-<context:component-scan base-package="fr.adaming.restControler"/>
+<context:component-scan base-package="fr.adaming.restController"/>
 
 <mvc:default-servlet-handler/> 
 

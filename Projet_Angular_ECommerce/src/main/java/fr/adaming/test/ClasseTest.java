@@ -15,7 +15,7 @@ import fr.adaming.service.IClientService;
 public class ClasseTest {
 
 	public static void main(String[] args) {
-		String configLocation = "C:\\Users\\inti0292\\git\\Projet_SpringMVC\\Projet_Ecommerce\\src\\main\\webapp\\WEB-INF\\application-context.xml";
+		String configLocation = "C:\\Users\\inti0292\\git\\Projet_Angular\\Projet_Angular_ECommerce\\src\\main\\webapp\\WEB-INF\\application-context.xml";
 		 
         ApplicationContext cxt = new FileSystemXmlApplicationContext(configLocation);
         

@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="produits")
 public class Product implements Serializable {
@@ -37,7 +39,8 @@ public class Product implements Serializable {
 	private int quantite;
 	@Column
 	private int prix;
-		
+	
+	@JsonIgnore
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "ID_CATEGORIE")
 	private Category categorie;

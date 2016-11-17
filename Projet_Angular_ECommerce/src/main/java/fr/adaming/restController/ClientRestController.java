@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.adaming.model.Category;
 import fr.adaming.service.IClientService;
 
+@RestController 
+@RequestMapping(value="/client")
 public class ClientRestController {
-
-	@RestController // Controller rest de Spring MVC
-	public class PaysRestControler {
-		
 		@Autowired
 		IClientService clientService;
 		
@@ -24,4 +22,4 @@ public class ClientRestController {
 		}
 	
 }
-}
+

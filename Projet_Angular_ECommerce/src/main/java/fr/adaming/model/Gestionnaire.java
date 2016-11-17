@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="gestionnaires")
 public class Gestionnaire implements Serializable {
@@ -31,6 +33,7 @@ public class Gestionnaire implements Serializable {
 	
 	private boolean actived;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="gestio")
 	private List<Role> roles;
 	

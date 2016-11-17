@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="clients")
 public class Client implements Serializable {
@@ -33,7 +35,7 @@ public class Client implements Serializable {
 	@Column
 	private String telephone;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private Collection<Commande> commandes;
 	

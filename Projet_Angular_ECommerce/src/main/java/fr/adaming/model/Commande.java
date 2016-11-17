@@ -16,6 +16,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name="commandes")
@@ -34,11 +36,12 @@ public class Commande implements Serializable {
 	private Date dateDeCommande;
 	
 	
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_client")
 	private Client client;
 	
+	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idCommande")
 	private  Map<Integer, LigneDeCommande>  ligneCommandes;

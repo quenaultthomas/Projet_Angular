@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "ligneDeCommandes")
 public class LigneDeCommande implements Serializable {
@@ -28,10 +30,12 @@ public class LigneDeCommande implements Serializable {
 	@Column
 	private int prix;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_produit")
 	private Product produit;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="idComande")
 	private Commande commande;
