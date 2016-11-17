@@ -1,0 +1,21 @@
+
+<h1>Liste de Pays</h1>
+
+<input ng-model="search" placeholder="Rechercher: ">
+<br/>
+<br/>
+<div>
+<table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Description</th>
+    </tr>
+    <tr ng-repeat="Cat in allCat | filter:search">
+        <td>{{Cat.id_c }}</td>
+        <td>{{Cat.nom }}</td>
+        <td>{{Cat.description }}</td>
+        
+    </tr>
+</table>
+</div>

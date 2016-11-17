@@ -1,0 +1,23 @@
+
+<h1>Liste de Pays</h1>
+
+<input ng-model="search" placeholder="Rechercher: ">
+<br/>
+<br/>
+<div>
+<table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Categorie</th>
+    </tr>
+    <tr ng-repeat="Prod in allProd | filter:search">
+        <td>{{Prod.id_p }}</td>
+        <td>{{Prod.nom }}</td>
+        <td>{{Prod.description }}</td>
+        <td>{{Prod.categorie.nom }}</td>
+        
+    </tr>
+</table>
+</div>
