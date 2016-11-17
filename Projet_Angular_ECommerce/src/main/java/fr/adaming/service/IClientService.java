@@ -23,6 +23,8 @@ public List<Product> SearchByAllProduits();
 	
 	public Client addClient(Client cl);
 	
+	public Client upClient(Client cl);
+	
 	public Product SearchByIdProduct(int id_prod);
 	
 	public Commande passerCommande(Panier panier, Client client);

@@ -55,6 +55,12 @@ public class ClientServiceImpl implements IClientService{
 	}
 
 	@Override
+	public Client upClient(Client cl) {
+		return clientDao.upClient(cl);
+		
+	}
+	
+	@Override
 	public Product SearchByIdProduct(int id_prod) {
 		return clientDao.SearchByIdProduct(id_prod);
 		 

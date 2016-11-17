@@ -41,6 +41,12 @@ public class ClientRestController {
 			
 			return clientService.addClient(client);
 		}
+		
+		@RequestMapping(value="/upClient", method=RequestMethod.PUT,produces="application/json")
+		public Client upClient(@RequestBody Client client){
+			
+			return clientService.upClient(client);
+		}
 	
 }
 

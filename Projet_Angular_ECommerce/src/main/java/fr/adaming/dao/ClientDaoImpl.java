@@ -101,6 +101,18 @@ public class ClientDaoImpl implements IClientDao{
 		return cl;
 		
 	}
+	
+	/**
+	 * methode permettant l'ajout du client
+	 */
+	@Override
+	public Client upClient(Client cl) {
+		Session s = sf.getCurrentSession();
+		
+		s.saveOrUpdate(cl);
+		return cl;
+		
+	}
 
 	/**
 	 * recherche du produit par son id
