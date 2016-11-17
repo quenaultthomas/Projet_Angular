@@ -13,11 +13,11 @@ public interface IGestionnaireDao {
 	
 	/** Méthodes concernant les categories*/
 	
-	public void addCategoryDao(Category c);
+	public Category addCategoryDao(Category c);
 	
 	public void delCategoryDao(int id);
 	
-	public void upCategoryDao(Category c);
+	public Category upCategoryDao(Category c);
 	
 	public List<Category> getAllCategoriesDao();
 	
@@ -29,11 +29,11 @@ public interface IGestionnaireDao {
 	
 	/** Méthodes concernant les produits*/
 	
-	public void addProductDao(Product p);
+	public Product addProductDao(Product p);
 	
 	public void delProduitDao(int id);
 	
-	public void upProduitDao(Product p);
+	public Product upProduitDao(Product p);
 	
 	public List<Product> getAllProductsDao();
 	

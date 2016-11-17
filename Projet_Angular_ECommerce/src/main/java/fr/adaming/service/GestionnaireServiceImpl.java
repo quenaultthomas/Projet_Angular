@@ -31,8 +31,8 @@ public class GestionnaireServiceImpl implements IGestionnaireService {
 	/** Méthodes concernant les categories*/
 
 	@Override
-	public void addCategoryService(Category c) {
-		gestioDao.addCategoryDao(c);
+	public Category addCategoryService(Category c) {
+		return gestioDao.addCategoryDao(c);
 		
 	}
 
@@ -43,8 +43,8 @@ public class GestionnaireServiceImpl implements IGestionnaireService {
 	}
 
 	@Override
-	public void upCategoryService(Category c) {
-		gestioDao.upCategoryDao(c);
+	public Category upCategoryService(Category c) {
+		return gestioDao.upCategoryDao(c);
 		
 	}
 
@@ -59,11 +59,11 @@ public class GestionnaireServiceImpl implements IGestionnaireService {
 	}
 	
 	
-	/** Méthodes concernant les categories*/
+	/** Méthodes concernant les produits*/
 	
 	@Override
-	public void addProductService(Product p) {
-		gestioDao.addProductDao(p);
+	public Product addProductService(Product p) {
+		return gestioDao.addProductDao(p);
 		
 	}
 
@@ -74,8 +74,8 @@ public class GestionnaireServiceImpl implements IGestionnaireService {
 	}
 
 	@Override
-	public void upProduitService(Product p) {
-		gestioDao.upProduitDao(p);
+	public Product upProduitService(Product p) {
+		return gestioDao.upProduitDao(p);
 		
 	}
 

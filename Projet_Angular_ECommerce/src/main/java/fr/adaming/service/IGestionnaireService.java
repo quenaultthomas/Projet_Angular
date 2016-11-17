@@ -10,11 +10,11 @@ public interface IGestionnaireService {
 	
 /** Méthodes concernant les categories*/
 	
-	public void addCategoryService(Category c);
+	public Category addCategoryService(Category c);
 	
 	public void delCategoryService(int id);
 	
-	public void upCategoryService(Category c);
+	public Category upCategoryService(Category c);
 	
 	public List<Category> getAllCategoriesService();
 	
@@ -26,11 +26,11 @@ public interface IGestionnaireService {
 	
 	/** Méthodes concernant les produits*/
 	
-	public void addProductService(Product p);
+	public Product addProductService(Product p);
 	
 	public void delProduitService(int id);
 	
-	public void upProduitService(Product p);
+	public Product upProduitService(Product p);
 	
 	public List<Product> getAllProductsService();
 	

@@ -40,7 +40,7 @@ public class Product implements Serializable {
 	@Column
 	private int prix;
 	
-	@JsonIgnore
+	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "ID_CATEGORIE")
 	private Category categorie;
