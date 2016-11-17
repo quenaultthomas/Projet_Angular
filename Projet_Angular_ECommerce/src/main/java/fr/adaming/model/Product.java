@@ -45,6 +45,7 @@ public class Product implements Serializable {
 	@JoinColumn(name = "ID_CATEGORIE")
 	private Category categorie;
 	
+	@JsonIgnore
 	@Transient
 	private String keyWord;
 
