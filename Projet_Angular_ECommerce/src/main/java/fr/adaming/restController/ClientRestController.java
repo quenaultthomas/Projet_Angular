@@ -46,6 +46,7 @@ public class ClientRestController {
 		public Client upClient(@RequestBody Client client){
 			
 			return clientService.upClient(client);
+			//
 		}
 	
 }
