@@ -1,0 +1,30 @@
+<h1>Recherche Par Id</h1>
+
+<form>
+  <div class="form-group">
+    <label>Id du Pays</label>
+    <input type="number" class="form-control" ng-model="id">
+    </div>
+    
+    
+  <button class="btn btn-primary" ng-click="getById()">Rechercher</button>
+  <button type="reset" class="btn btn-danger">Reset</button>
+</form>
+<br/>
+<br/>
+<div ng-show="indice">
+<table class="table table-condensed">
+    <tr>
+        <th>Pays</th>
+        <th>Poupulation</th>
+        <th>Operations </th>
+    </tr>
+    <tr >
+    	<td>{{pays.nom }}</td>
+        <td>{{pays.population }}</td>
+        <td><a ng-click="supprimer(pays)" class="btn btn-sm btn-warning">Supprimer</a>
+         | <a ng-click="modifier(pays)" class="btn btn-sm btn-primary">Modifier</a></td>
+    </tr>
+    
+</table>
+</div>

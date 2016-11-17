@@ -1,0 +1,14 @@
+<h1>Ajouter un Pays</h1>
+
+<form>
+	<div class="form-group">
+		<label>Nom</label> 
+		<input type="text" class="form-control"ng-model="paysForm.nom">
+		<label>Population</label> 
+		<input type="number" class="form-control"ng-model="paysForm.population">
+	</div>
+
+
+	<button class="btn btn-primary" ng-click="ajouter()">Valider</button>
+	<button type="reset" class="btn btn-danger">Reset</button>
+</form>
