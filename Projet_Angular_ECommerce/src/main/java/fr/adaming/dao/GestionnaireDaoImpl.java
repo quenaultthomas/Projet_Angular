@@ -40,9 +40,11 @@ public class GestionnaireDaoImpl implements IGestionnaireDao {
 
 
 	@Override
-	public void addCategoryDao(Category c) {
+	public Category addCategoryDao(Category c) {
 		Session s = sf.getCurrentSession();
 		s.save(c);
+		
+		return c;
 		
 	}
 
@@ -55,9 +57,11 @@ public class GestionnaireDaoImpl implements IGestionnaireDao {
 	}
 
 	@Override
-	public void upCategoryDao(Category c) {
+	public Category upCategoryDao(Category c) {
 		Session s = sf.getCurrentSession();
 		s.saveOrUpdate(c);
+		
+		return c;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -91,10 +95,11 @@ public class GestionnaireDaoImpl implements IGestionnaireDao {
 	
 	
 	@Override
-	public void addProductDao(Product p) {
+	public Product addProductDao(Product p) {
 		Session s = sf.getCurrentSession();
 		
 		s.save(p);
+		return p;
 		
 	}
 
@@ -108,10 +113,11 @@ public class GestionnaireDaoImpl implements IGestionnaireDao {
 	}
 
 	@Override
-	public void upProduitDao(Product p) {
+	public Product upProduitDao(Product p) {
 		Session s = sf.getCurrentSession();
 		
 		s.saveOrUpdate(p);
+		return p;
 		
 	}
 
