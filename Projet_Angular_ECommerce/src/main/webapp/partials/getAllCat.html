@@ -10,11 +10,13 @@
         <th>Id</th>
         <th>Nom</th>
         <th>Description</th>
+        <th>Operations</th>
     </tr>
     <tr ng-repeat="Cat in allCat | filter:search">
         <td>{{Cat.id_c }}</td>
         <td>{{Cat.nom }}</td>
         <td>{{Cat.description }}</td>
+        <td><a ng-click="trouver(Cat)" class="btn btn-sm btn-warning">Liste Produits</a></td>
         
     </tr>
 </table>

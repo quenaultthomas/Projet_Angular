@@ -1,0 +1,31 @@
+<h1>Recherche Produit par Categorie</h1>
+
+<table class="table table-condensed">
+    <tr>
+    	<th>Id</th>
+        <th>Descritpion</th>
+    </tr>
+    <tr >
+    	<td>{{objCat.nom }}</td>
+        <td>{{objCat.description }}</td>
+    </tr>
+    
+</table>
+<br/>
+<h1 align="center">Les produits de la Categorie : {{objCat.nom}}</h1>
+<br/>
+<table class="table table-condensed">
+    <tr>
+    	<th>Id</th>
+        <th>Produit</th>
+        <th>Descritpion</th>
+        <th>Prix</th>
+    </tr>
+    <tr  ng-repeat="Prod in ProdByIdCat | filter:search">
+    	<td>{{Prod.id_p }}</td>
+    	<td>{{Prod.nom }}</td>
+        <td>{{Prod.description }}</td>
+        <td>{{Prod.prix }}</td>
+    </tr>
+    
+</table>

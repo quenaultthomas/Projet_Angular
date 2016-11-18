@@ -32,11 +32,22 @@ monApp
 		});
 	}
 	
-	
+	function getProdByIdCat(id_Cat, callback) {
+
+		$http({
+			method : 'GET',
+			url : urlWS+"prodByIdCat/"+id_Cat
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
 	
 	return {
 		getAllCat : getAllCat,
 		getAllProd : getAllProd,
-		
+		getProdByIdCat:getProdByIdCat,
 	}
 });
