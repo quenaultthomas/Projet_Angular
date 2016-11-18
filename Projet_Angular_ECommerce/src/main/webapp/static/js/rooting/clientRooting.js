@@ -16,6 +16,11 @@ monApp.config(function($routeProvider) {
 		templateUrl : "partials/getProdByIdCat.html",
 		controller : "getProdByIdCat"
 	})
+	
+	.when('/panier', {
+		templateUrl : "partials/Panier.html",
+		controller : "PanierCtrl"
+	})
 
 	.otherwise({
 		redirectTo : '/listeCat'

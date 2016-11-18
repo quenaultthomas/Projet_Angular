@@ -20,12 +20,14 @@
         <th>Produit</th>
         <th>Descritpion</th>
         <th>Prix</th>
+        <th>Operation</th>
     </tr>
     <tr  ng-repeat="Prod in ProdByIdCat | filter:search">
     	<td>{{Prod.id_p }}</td>
     	<td>{{Prod.nom }}</td>
         <td>{{Prod.description }}</td>
         <td>{{Prod.prix }}</td>
+        <td><a ng-click="AjouterAuPanier(Prod)" class="btn btn-sm btn-primary">Ajouter au Panier</a></td>
     </tr>
     
 </table>

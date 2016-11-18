@@ -2,22 +2,37 @@
 
 <div>
 
-	<div class="alert alert-warning" ng-show="cartData.length == 0">
-		There are no products in your shopping cart. <a href="#/products"
-			class="alert-link">Click here to return to the catalogue</a>
+	<div class="alert alert-warning" ng-show="article.length == 0">
+		Votre panier et vide. <a href="#/liste"
+			class="alert-link">Cliquer ici pour continuer vos achats</a>
 	</div>
-	<div ng-hide="cartData.length == 0">
+	<div ng-hide="article.length == 0">
 		<table class="table">
-			
+
 			<thead>
 				<th>Produit</th>
 				<th>Prix unitaire</th>
-				<th>Quantité</th>
+				<th>Quantite</th>
 				<th>Prix total</th>
+				<th>Operation</th>
 			</thead>
 			<tbody>
-				<tr>
-				<td></td>
+				<tr ng-repeat="prod in article">
+					<td>{{prod.nom}}</td>
+					<td>{{prod.prix}}</td>
+					<td>{{prod.qte}} <a ng-click="addQte(prod)"
+						class="btn btn-sm btn-primary">+</a> | <a
+						ng-click="removeQte(prod)" class="btn btn-sm btn-danger">-</a></td>
+					<td>{{prod.prix * prod.qte}}</td>
+					<td><a ng-click="remove(prod)" class="btn btn-sm btn-danger">Supprimer</a></td>
 				</tr>
-			</tbody>	
+			</tbody>
 		</table>
+	</div>
+	<div ng-hide="article.length == 0">
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="#/retour">Continuer
+					vos achats</a></li>
+		</ul>
+	</div>
+</div>

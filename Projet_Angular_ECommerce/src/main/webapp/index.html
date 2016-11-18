@@ -15,31 +15,55 @@
 	type="text/css" />
 
 <!-- Angular Libraries -->
-<script type="text/javascript"
-	src="static/resources/angular/angular.js"></script>
+<script type="text/javascript" src="static/resources/angular/angular.js"></script>
 <script src="static/resources/angular/angular-route.js"
 	type="text/javascript"></script>
 
 <!-- Mes Librairies -->
 <script src="static/js/modules/module.js" type="text/javascript"></script>
-<script src="static/js/providers/clientProviders.js" type="text/javascript"></script>
+<script src="static/js/providers/clientProviders.js"
+	type="text/javascript"></script>
+<script src="static/js/providers/panierProvider.js"
+	type="text/javascript"></script>
 <script src="static/js/controlers/clientControlers.js"
 	type="text/javascript"></script>
+
 <script src="static/js/rooting/clientRooting.js" type="text/javascript"></script>
 
 
 </head>
 <body ng-app="monApp">
 	<nav class="navbar navbar-inverse">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="#">Accueil</a></li>
-			<li role="presentation"><a href="#/listeCat">Liste des Catégories</a></li>
-			<li role="presentation"><a href="#/listeProd">Liste des Produits</a></li>
-		</ul>
+		<div class="col-xs-12 col-sm-8 col-md-11 col-lg-8 ">
+			<ul class="nav nav-pills">
+				<li role="presentation" class="active"><a href="#">Accueil</a></li>
+				<li role="presentation"><a href="#/listeCat">Liste des
+						Catégories</a></li>
+				<li role="presentation"><a href="#/listeProd">Liste des
+						Produits</a></li>
+			</ul>
+		</div>
+		<div align="right" class=" col-lg-4">
+			<div class="form-group">
+				<div class=" col-lg-8" style="margin-top: 5px">
+					<form>
+						<input type="text" class="form-control" placeholder="Search"
+							ng-model="search">
+					</form>
+				</div>
+				<div class=" col-lg-4">
+					<ul class="nav nav-pills">
+						<li role="presentation" class="active"><a href="#/panier">Panier</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
 	</nav>
-	
-	<div class="container" ></div>
+
+	<div class="container"></div>
 	<div ng-view></div>
-	
-	</body>
+
+</body>
 </html>

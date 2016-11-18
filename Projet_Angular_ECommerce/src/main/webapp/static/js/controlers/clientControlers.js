@@ -37,7 +37,7 @@ monApp
 
 .controller(
 		'getProdByIdCat',
-		function($rootScope, $scope, clientFactory, $location) {
+		function($rootScope, $scope, clientFactory, panierProvider, $location) {
 
 			$scope.objCat.id_c = $rootScope.objCat.id_c;
 			$scope.objCat.nom = $rootScope.objCat.nom;
@@ -49,25 +49,34 @@ monApp
 					});
 			
 			$scope.AjouterAuPanier = function (Prod) { 
-				cart.addProduct(Prod.id_p, Prod.nom, Prod.prix);
+				panierProvider.addProduct(Prod.id_p, Prod.nom, Prod.prix);
 			}
 
 		})
 
-.controller("PanierCtrl", function($scope, PanierProvider) {
+.controller("PanierCtrl", function($scope, panierProvider) {
 
-	$scope.cartData = cart.getProducts();
+	$scope.article = panierProvider.getProducts();
 
 	$scope.total = function() {
 		var total = 0;
-		for (var i = 0; i < $scope.cartData.length; i++) {
-			total += ($scope.cartData[i].price * $scope.cartData[i].count);
+		for (var i = 0; i < $scope.article.length; i++) {
+			total += ($scope.article[i].prix * $scope.article[i].qte);
 		}
 		return total;
 	}
 
-	$scope.remove = function(id) {
-		cart.removeProduct(id);
+	$scope.addQte = function(prod){
+		panierProvider.addQte(prod.id_p)
+		$scope.article = panierProvider.getProducts();
+	}
+	$scope.removeQte = function(prod){
+		panierProvider.removeQte(prod.id_p)
+		$scope.article = panierProvider.getProducts();
+	}
+	
+	$scope.remove = function(prod) {
+		panierProvider.removeProduct(prod.id_p);
 		
 	}
 });
