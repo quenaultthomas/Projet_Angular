@@ -33,12 +33,30 @@ public class GestioRestController {
 	public List<Product> getAllProduct(){
 		return gestioService.getAllProductsService();
 	}
+
 	
 	/** Retourne la liste des categories*/
 	@RequestMapping(value="/allCat", method=RequestMethod.GET, produces="application/json")
 	public List<Category> getAllCategory(){
 		return gestioService.getAllCategoriesService();
 	}
+	
+	
+	/** Retourne un produit par son id*/
+	@RequestMapping(value="/prod/{id}", method=RequestMethod.GET,produces="application/json")
+	public Product getProd(@PathVariable("id") int pId){
+		
+		return gestioService.getProductByIdService(pId);
+	}
+	
+	
+	/** Retourne une categorie par son id*/
+	@RequestMapping(value="/cat/{id}", method=RequestMethod.GET,produces="application/json")
+	public Category getCat(@PathVariable("id") int cId){
+		
+		return gestioService.getCategoryByIdService(cId);
+	}
+	
 	
 	/** Ajouter un produit*/
 	@RequestMapping(value="/addProd", method=RequestMethod.POST,produces="application/json",consumes="application/json")
@@ -47,6 +65,7 @@ public class GestioRestController {
 		return gestioService.addProductService(p);
 		
 	}
+	
 	
 	/** Ajouter une categorie*/
 	@RequestMapping(value="/addCat", method=RequestMethod.POST,produces="application/json",consumes="application/json")

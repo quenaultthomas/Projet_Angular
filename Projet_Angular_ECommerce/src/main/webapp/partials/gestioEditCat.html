@@ -1,0 +1,20 @@
+<h1>Modifier une categorie</h1>
+
+
+<form>
+	<div class="form-group">
+		<input type="text" class="form-control"ng-model="categoryForm.id_c" ng-hide="true">
+		<label>Id</label> 
+		<input type="text" class="form-control"ng-model="categoryForm.nom">
+		<label>Nom</label> 
+		<input type="text" class="form-control"ng-model="categoryForm.description">
+		<label>Description</label> 
+	</div>
+
+
+	<button class="btn btn-primary" ng-click="gestioEditCat()">Valider</button>
+	<button type="reset" class="btn btn-danger">Reset</button>
+</form>
+</div>
+
+
