@@ -1,4 +1,4 @@
-myApp.factory('gestioFactory',function($http){
+monApp.factory('gestioFactory',function($http){
 	
 	var urlWS = "http://localhost:8080/Projet_Angular_ECommerce/gestio/";
 	

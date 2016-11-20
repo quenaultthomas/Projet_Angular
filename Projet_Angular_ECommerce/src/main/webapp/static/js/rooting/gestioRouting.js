@@ -1,25 +1,26 @@
-myApp.config(function($routeProvider) {
+monApp.config(function($routeProvider) {
 	$routeProvider
 
 	.when('/gestioListeCat', {
 		templateUrl : "partials/gestioGetAllCat.html",
-		controller : "gestioGetAllCtrl"
-	}).when('/getById', {
+		controller : "gestioGetAllCatCtrl"
+			
+	}).when('/gestioGetCatById', {
 		templateUrl : "partials/gestioGetCatById.html",
-		controller : "gestioGetByIdCtrl"
+		controller : "gestioGetCatByIdCtrl"
 	})
 
 	.when('/gestioAddCat', {
 		templateUrl : "partials/gestioAddCat.html",
-		controller : "gestioAddCtrl"
+		controller : "gestioAddCatCtrl"
 	})
 
 	.when('/gestioEditCat', {
 		templateUrl : "partials/gestioEditCat.html",
-		controller : "gestioEditCtrl"
+		controller : "gestioEditCatCtrl"
 	})
 
-	.when('/delete', {
+	.when('/gestioDelCat', {
 		templateUrl : "partials/gestioDelCat.html",
 		controller : "gestioDelCatCtrl"
 	})
