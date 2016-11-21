@@ -1,0 +1,49 @@
+<style>
+input.ng-valid {
+	background-color: lightgreen;
+	border-color: lightgreen;
+}
+</style>
+
+
+<div>
+	<div>
+	</div>
+	<div
+		class="col-xs-12 col-sm-8 col-md-11 col-lg-4 ">
+		<form name="monForm" novalidate>
+
+
+			<h3>Nom</h3>
+
+			<div class="form-group">
+				<input class="form-control" ame="pNom" type="text" ng-model="clientForm.name" required>
+			</div>
+
+			<h3>Adresse</h3>
+
+			<div class="form-group">
+				<input class="form-control" name="pAdresse" type="text" ng-model="clientForm.adresse" required>
+			</div>
+
+			<h3>Mail</h3>
+
+			<div class="form-group">
+				<input class="form-control" name="pMail" type="email" ng-model="clientForm.mail" required>
+			</div>
+
+			<h3>Telephone</h3>
+
+			<div class="form-group">
+				<input class="form-control" name="pTelephone" type="text" ng-model="clientForm.telephone" required>
+			</div>
+
+			<br /> <br />
+
+			<button ng-click="ajouter()" ng-disabled="monForm.$invalid">Soumettre</button>
+			<button ng-click="reset()">Reset</button>
+
+
+		</form>
+	</div>
+</div>

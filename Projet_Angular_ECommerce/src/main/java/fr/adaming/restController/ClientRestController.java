@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Category;
 import fr.adaming.model.Client;
+import fr.adaming.model.Commande;
+import fr.adaming.model.Panier;
 import fr.adaming.model.Product;
 import fr.adaming.service.IClientService;
 
@@ -47,6 +49,12 @@ public class ClientRestController {
 			
 			return clientService.upClient(client);
 			
+		}
+		
+		@RequestMapping(value="/addCommande", method=RequestMethod.POST,produces="application/json")
+		public Commande addCommande(@RequestBody Client client,@RequestBody Panier panier){
+			
+			return clientService.passerCommande(panier, client);
 		}
 	
 }

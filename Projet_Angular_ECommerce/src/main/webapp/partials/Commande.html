@@ -1,0 +1,31 @@
+<h2>Les details de votre commande</h2>
+
+<div>
+
+	<h4>Nom : {{clientC.name}}</h4>
+	<h4>Adresse : {{clientC.adresse}}</h4>
+	<h4>Mail : {{clientC.mail}}</h4>
+	<h4>Telephone : {{clientC.telephone}}</h4>
+
+
+
+	<div>
+		<table class="table">
+			<thead>
+				<th>Produit</th>
+				<th>Prix unitaire</th>
+				<th>Quantite</th>
+				<th>Prix total</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="prod in article">
+					<td>{{prod.nom}}</td>
+					<td>{{prod.prix}}</td>
+					<td>{{prod.qte}}</td>
+					<td>{{prod.prix * prod.qte}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<button ng-click="paiement()" >Payer</button>
+	</div>
+</div>

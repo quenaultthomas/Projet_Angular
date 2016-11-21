@@ -1,6 +1,8 @@
 monApp.factory("panierProvider", function() {
 
 	var article = [];
+	var nbrArticle = 0;
+	var price = 0;
 
 	return {
 
@@ -43,12 +45,10 @@ monApp.factory("panierProvider", function() {
 			for (var i = 0; i < article.length; i++) {
 
 				if (article[i].id_p == id_p) {
-					if(article[i].qte>0)
+					if(article[i].qte>1)
 					article[i].qte--;
-				}else{
-					article[i].splice(i, 1);
-				}
 					break;
+				}
 				}
 		},
 
@@ -64,7 +64,24 @@ monApp.factory("panierProvider", function() {
 
 		getProducts : function() {
 			return article;
-		}
-
+		},
+		
+		
+		getCount : function() {
+			var nbrArticle = 0;
+			for (var i = 0; i < article.length; i++) {
+				nbrArticle += article[i].qte;
+			}
+			return nbrArticle;
+		},
+		
+		getPrice : function() {
+			var price = 0;
+			for (var i = 0; i < article.length; i++) {
+				price +=  (article[i].prix * article[i].qte);
+			}
+			return price;
+		},
+		
 	}
 })

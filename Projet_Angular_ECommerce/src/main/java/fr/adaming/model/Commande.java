@@ -36,12 +36,12 @@ public class Commande implements Serializable {
 	private Date dateDeCommande;
 	
 	
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "id_client")
 	private Client client;
 	
-	@JsonIgnore
+	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "idCommande")
 	private  Map<Integer, LigneDeCommande>  ligneCommandes;

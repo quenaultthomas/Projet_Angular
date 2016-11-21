@@ -47,8 +47,8 @@ monApp
 					function(callback) {
 						$scope.ProdByIdCat = callback
 					});
-			
-			$scope.AjouterAuPanier = function (Prod) { 
+
+			$scope.AjouterAuPanier = function(Prod) {
 				panierProvider.addProduct(Prod.id_p, Prod.nom, Prod.prix);
 			}
 
@@ -57,6 +57,8 @@ monApp
 .controller("PanierCtrl", function($scope, panierProvider) {
 
 	$scope.article = panierProvider.getProducts();
+	$scope.price = panierProvider.getPrice();
+	$scope.nbrArticle = panierProvider.getCount();
 
 	$scope.total = function() {
 		var total = 0;
@@ -66,18 +68,64 @@ monApp
 		return total;
 	}
 
-	$scope.addQte = function(prod){
+	$scope.addQte = function(prod) {
 		panierProvider.addQte(prod.id_p)
 		$scope.article = panierProvider.getProducts();
+		$scope.price = panierProvider.getPrice();
+		$scope.nbrArticle = panierProvider.getCount();
 	}
-	$scope.removeQte = function(prod){
+	$scope.removeQte = function(prod) {
 		panierProvider.removeQte(prod.id_p)
 		$scope.article = panierProvider.getProducts();
+		$scope.price = panierProvider.getPrice();
+		$scope.nbrArticle = panierProvider.getCount();
 	}
-	
+
 	$scope.remove = function(prod) {
 		panierProvider.removeProduct(prod.id_p);
-		
-	}
-});
+		$scope.price = panierProvider.getPrice();
+		$scope.nbrArticle = panierProvider.getCount();
 
+	}
+})
+
+.controller('ajoutClientCtrl',
+		function($rootScope, $scope, clientFactory, $location) {
+			$scope.clientForm = {
+				name : "",
+				adresse : "",
+				mail : "",
+				telephone : ""
+			}
+
+			$scope.ajouter = function() {
+
+				clientFactory.add($scope.clientForm, function(callback) {
+					$location.path('/commande')
+				});
+
+				$rootScope.clientC = $scope.clientForm;
+
+			}
+
+		})
+
+.controller(
+		'CommandeCtrl',
+		function($rootScope, $scope, clientFactory, panierProvider, $location) {
+			// $scope.cl = clientFactory.getClient();
+			$scope.article = panierProvider.getProducts();
+			$scope.clientC = $rootScope.clientC;
+
+			$scope.paiement = function() {
+				clientFactory.Paiement($scope.article, $scope.clientForm,
+						function(callback) {
+							// $location.path('/récaptilatifPDF')
+						});
+			}
+
+		})
+
+		
+		
+		

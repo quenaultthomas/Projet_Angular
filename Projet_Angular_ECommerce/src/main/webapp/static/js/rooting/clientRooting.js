@@ -21,9 +21,20 @@ monApp.config(function($routeProvider) {
 		templateUrl : "partials/Panier.html",
 		controller : "PanierCtrl"
 	})
+	
+	.when('/ajoutClient', {
+		templateUrl : "partials/ajoutClient.html",
+		controller : "ajoutClientCtrl"
+	})
+	
+	.when('/commande', {
+		templateUrl : "partials/Commande.html",
+		controller : "CommandeCtrl"
+	})
 
 	.otherwise({
 		redirectTo : '/listeCat'
 	})
 
 })
+

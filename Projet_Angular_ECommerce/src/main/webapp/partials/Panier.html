@@ -1,10 +1,10 @@
-<h2>Your cart</h2>
+<h2>Votre Panier</h2>
 
 <div>
 
 	<div class="alert alert-warning" ng-show="article.length == 0">
-		Votre panier et vide. <a href="#/liste"
-			class="alert-link">Cliquer ici pour continuer vos achats</a>
+		Votre panier et vide. <a href="#/liste" class="alert-link">Cliquer
+			ici pour continuer vos achats</a>
 	</div>
 	<div ng-hide="article.length == 0">
 		<table class="table">
@@ -28,10 +28,15 @@
 				</tr>
 			</tbody>
 		</table>
+		<h1>Le prix est : {{price}}</h1>
+		<h1>Le nombre d'article est : {{nbrArticle}}</h1>
+		
 	</div>
-	<div ng-hide="article.length == 0">
+	<div ng-hide="article.length == 0" align="center">
 		<ul class="nav nav-pills">
 			<li role="presentation" class="active"><a href="#/retour">Continuer
+					vos achats</a></li>
+			<li role="presentation" class="active"><a href="#/ajoutClient">Valider
 					vos achats</a></li>
 		</ul>
 	</div>
