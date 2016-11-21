@@ -133,7 +133,7 @@ public class ClientDaoImpl implements IClientDao{
 		
 			Session s = sf.getCurrentSession();
 			
-			//s.save(client);
+			s.save(client);
 			
 			Commande commande = new Commande();
 			

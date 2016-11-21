@@ -129,8 +129,9 @@ public class ClientRestController {
 		Date date = c.getTime();
 		commande.setDateDeCommande(date);
 		
+		//commande.setLigneCommandes(Article);
+		
 		for (LigneDeCommande lc : Article.values()) {
-			commande.setLigneCommandes(Article);
 			clientService.addLc(lc);
 		}
 		

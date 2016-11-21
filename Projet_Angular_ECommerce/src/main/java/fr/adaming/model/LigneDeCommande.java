@@ -32,7 +32,7 @@ public class LigneDeCommande implements Serializable {
 	private int prix;
 
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "id_produit")
 	private Product produit;
 	
