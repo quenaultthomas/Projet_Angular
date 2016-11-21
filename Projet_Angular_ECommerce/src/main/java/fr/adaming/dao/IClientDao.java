@@ -33,6 +33,8 @@ public List<Product> SearchByAllProduits();
 		
 	public List<LigneDeCommande> SearchLigneCommandeByIdCommande(int id_commande);
 
+	public LigneDeCommande addLc(LigneDeCommande lc);
+
 	
 	
 }

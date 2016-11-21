@@ -1,7 +1,7 @@
 monApp
 
 .controller('getAllCatCtrl',
-		function($rootScope, $scope, clientFactory, $location) {
+		function($rootScope, $scope, panierProvider, clientFactory, $location) {
 			clientFactory.getAllCat(function(callback) {
 				$scope.allCat = callback
 			});
@@ -25,19 +25,25 @@ monApp
 				// $rootScope.ProdByIdCat = $scope.ProdByIdCat;
 			}
 
+			$scope.price = panierProvider.getPrice();
+			$scope.nbrArticle = panierProvider.getCount();
+
 		})
 
 .controller('getAllProdCtrl',
-		function($rootScope, $scope, clientFactory, $location) {
+		function($rootScope, $scope, panierProvider, clientFactory, $location) {
 			clientFactory.getAllProd(function(callback) {
 				$scope.allProd = callback
 			});
 
+			$scope.price = panierProvider.getPrice();
+			$scope.nbrArticle = panierProvider.getCount();
 		})
 
 .controller(
 		'getProdByIdCat',
-		function($rootScope, $scope, clientFactory, panierProvider, $location) {
+		function($rootScope, $scope, panierProvider, clientFactory,
+				panierProvider, $location) {
 
 			$scope.objCat.id_c = $rootScope.objCat.id_c;
 			$scope.objCat.nom = $rootScope.objCat.nom;
@@ -50,32 +56,47 @@ monApp
 
 			$scope.AjouterAuPanier = function(Prod) {
 				panierProvider.addProduct(Prod.id_p, Prod.nom, Prod.prix);
+
+				$scope.price = panierProvider.getPrice();
+				$scope.nbrArticle = panierProvider.getCount();
 			}
+
+			$scope.price = panierProvider.getPrice();
+			$scope.nbrArticle = panierProvider.getCount();
 
 		})
 
-.controller("PanierCtrl", function($scope, panierProvider) {
+.controller("PanierCtrl", function($scope, clientFactory, panierProvider, $location) {
 
+	$scope.lingeCom = {
+			"prix" : "",
+			"quantite" : "",
+			"produit" : {
+					"nom" : "",
+					"descritpion" : "",
+					"prix" : "",
+					"quantité" : "",
+					"catégorie" : {
+							"id_c" : "",
+							"non" : "",
+							"decription" : "",
+					}
+			}
+	};
+	
 	$scope.article = panierProvider.getProducts();
 	$scope.price = panierProvider.getPrice();
 	$scope.nbrArticle = panierProvider.getCount();
 
-	$scope.total = function() {
-		var total = 0;
-		for (var i = 0; i < $scope.article.length; i++) {
-			total += ($scope.article[i].prix * $scope.article[i].qte);
-		}
-		return total;
-	}
-
+	
 	$scope.addQte = function(prod) {
-		panierProvider.addQte(prod.id_p)
+		panierProvider.addQte(prod.id_p);
 		$scope.article = panierProvider.getProducts();
 		$scope.price = panierProvider.getPrice();
 		$scope.nbrArticle = panierProvider.getCount();
 	}
 	$scope.removeQte = function(prod) {
-		panierProvider.removeQte(prod.id_p)
+		panierProvider.removeQte(prod.id_p);
 		$scope.article = panierProvider.getProducts();
 		$scope.price = panierProvider.getPrice();
 		$scope.nbrArticle = panierProvider.getCount();
@@ -87,10 +108,19 @@ monApp
 		$scope.nbrArticle = panierProvider.getCount();
 
 	}
+
+	$scope.ajoutLC = function() {
+			panierProvider.ajoutLC(function(callback)
+					{
+						$scope.article=callback;
+					});
+			$location.path("/ajoutClient");
+	}
 })
 
 .controller('ajoutClientCtrl',
 		function($rootScope, $scope, clientFactory, $location) {
+	
 			$scope.clientForm = {
 				name : "",
 				adresse : "",
@@ -117,15 +147,10 @@ monApp
 			$scope.article = panierProvider.getProducts();
 			$scope.clientC = $rootScope.clientC;
 
-			$scope.paiement = function() {
-				clientFactory.Paiement($scope.article, $scope.clientForm,
-						function(callback) {
-							// $location.path('/récaptilatifPDF')
-						});
+			$scope.addCom = function() {
+				clientFactory.ajoutCom($scope.clientC, function(callback) {
+					$location.path('/commande')
+				});
 			}
 
 		})
-
-		
-		
-		

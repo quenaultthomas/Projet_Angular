@@ -79,13 +79,29 @@ monApp
 //		client
 //	}
 	
-	function Paiement(article, clientC, callback) {
+//	function Paiement(article, clientC, callback) {
+//
+//		$http({
+//			method : 'POST',
+//			url : urlWS+"addCommande",
+//			data : angular.toJson(article,clientC),
+//			headers : {'Content-Type':'application/json'}
+//			
+//			
+//		}).success(function(response) {
+//			console.log(response)
+//			callback(response)
+//			
+//		}).error(function(response) {
+//			console.log(response)
+//		});
+//	}
+	
+	function ajoutLC(id,qte, callback) {
 
 		$http({
-			method : 'POST',
-			url : urlWS+"addCommande",
-			data : angular.toJson(article,clientC),
-			headers : {'Content-Type':'application/json'}
+			method : 'GET',
+			url : urlWS+"addLC/"+id+"/"+qte,
 			
 			
 		}).success(function(response) {
@@ -97,6 +113,22 @@ monApp
 		});
 	}
 	
+	function ajoutCom(client, callback) {
+
+		$http({
+			method : 'POST',
+			url : urlWS+"addCom",
+			data : angular.toJson(client),
+			headers : {'Content-Type':'application/json'}
+			
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+			
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
 	
 	return {
 		getAllCat : getAllCat,
@@ -104,6 +136,8 @@ monApp
 		getProdByIdCat:getProdByIdCat,
 		add : add,
 		//getClient : getClient,
-		Paiement : Paiement,
+//		Paiement : Paiement,
+		ajoutLC:ajoutLC,
+		ajoutCom:ajoutCom,
 	}
 });
