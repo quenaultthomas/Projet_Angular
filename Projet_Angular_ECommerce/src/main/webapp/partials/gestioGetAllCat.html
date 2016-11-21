@@ -1,49 +1,26 @@
 
 <h1>Liste des categories</h1>
 
-<input ng-model="search" placeholder="Rechercher: ">
 <br />
 <br />
-<div class="row">
-	<div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-body">
-				<form>
-					<table class="table table-hover">
-						<tr>
-							<th><input type="checkbox" ng-model="selectedAll"
-								ng-click="checkAll()" /></th>
-							<th>Id</th>
-							<th>Nom</th>
-							<th>Description</th>
+<form>
+	<table class="table table-hover">
+		<tr>
+			<th>Id</th>
+			<th>Nom</th>
+			<th>Description</th>
+			<th>Operations</th>
 
-						</tr>
-						<tr ng-repeat="category in allCategory | filter:search">
-							<td><input type="checkbox" ng-model="category.selected" /></td>
-							<td>{{category.id_c }}</td>
-							<td><div ng-hide="category.selected">{{category.nom }}</div>
-								<div ng-show="category.selected">
-									<input type="text" required="required"
-										ng-model="categoryForm.nom" />
-								</div></td>
-							<td><div ng-hide="category.selected">{{category.description }}</div>
-								<div ng-show="category.selected">
-									<input type="text" required="required"
-										ng-model="categoryForm.description" />
-								</div></td>
-						</tr>
-					</table>
-					<div class="form-group">
-						<input type="button" ng-click="addCat()" class="btn btn-primary"
-							value="Ajouter" /> <input ng-disabled="!category.selected"
-							ng-hide="!allCategory.length" type="button" ng-click="editCat()"
-							class="btn btn-sm btn-warning" value="Modifier" /> <input
-							ng-disabled="!category.selected" ng-hide="!allCategory.length"
-							type="button" ng-click="delCat(category)" class="btn btn-danger"
-							value="supprimer" />
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+		</tr>
+		<tr ng-repeat="category in allCategory">
+			<td>{{category.id_c }}</td>
+			<td>{{category.nom }}</td>
+			<td>{{category.description }}</td>
+			<td><input type="button" ng-click="editCat(category)"
+				class="btn btn-sm btn-warning" value="Modifier" /> <input
+				type="button" ng-click="delCat(category)" class="btn btn-danger"
+				value="supprimer" /></td>
+		</tr>
+	</table>
+</form>
+

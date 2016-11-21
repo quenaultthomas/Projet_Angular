@@ -19,73 +19,40 @@ monApp
 
 		.controller(
 				'gestioGetAllCatCtrl',
-				function($scope, gestioFactory) {
+				function($rootScope, $scope, gestioFactory, $location) {
 
 					gestioFactory.gestioGetAllCat(function(callback) {
 						$scope.allCategory = callback;
 
 					});
 					
-					$scope.categoryForm={
-							nom : "",
-							description : ""
+					$rootScope.categoryForm={
+						id : -1,
+						nom : "",
+						description : ""
 					}
-					
 					
 
 					$scope.delCat = function(category) {
-						$scope.selectedAll = false;
-						angular.forEach($scope.allCategory, function(selected) {
-							if (!selected.selected) {
-								gestioFactory.gestioDelCat(selected,category.id_c, function(
-										callback) {
-								})
-							}
-							;
+								gestioFactory.gestioDelCat(category.id_c,function(callback) {
+								
+								gestioFactory.gestioGetAllCat(function(callback) {
+									$scope.allCategory = callback;
 
-						});
-
-						gestioFactory.gestioGetAllCat(function(callback) {
-							$scope.allCategory = callback;
-
-						});
-					}
-					
-
-					$scope.addCat = function() {
-						gestioFactory.gestioAddCat($scope.categoryForm,
-								function(callback) {
-									$scope.category = {}
 								});
-						gestioFactory.gestioGetAllCat(function(callback) {
-							$scope.allCategory = callback;
+							});
 
-						});
-
-					}
 					
-					
-					
-					$scope.editCat=function(){
-						gestioFactory.gestioEditCat($scope.categoryForm, function (callback){
-						});
-						gestioFactory.gestioGetAllCat(function(callback) {
-							$scope.allCategory = callback;
-						});
-					}
-
-					$scope.checkAll = function() {
-						if (!$scope.selectedAll) {
-							$scope.selectedAll = true;
-						} else {
-							$scope.selectedAll = false;
-						}
-						angular.forEach($scope.allCategory, function(
-								allCategory) {
-							allCategory.selected = $scope.selectedAll;
-						});
-					};
+					$scope.editCat=function(category){
+						$rootScope.categoryForm.id_c = category.id_c;
+						$rootScope.categoryForm.nom = category.nom;
+						$rootScope.categoryForm.description = category.description;
+						$location.path("/gestioEditCat")
+						
+					}}
 				})
+
+				
 				   
 
 		.controller(
