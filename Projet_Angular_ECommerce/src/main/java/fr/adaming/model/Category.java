@@ -35,7 +35,7 @@ public class Category implements Serializable {
 	private String description;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "categorie", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "categorie", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private Collection<Product> produits = new ArrayList<Product>();
 
 	/**
