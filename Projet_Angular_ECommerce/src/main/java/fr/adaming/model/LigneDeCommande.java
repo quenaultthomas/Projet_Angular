@@ -2,6 +2,7 @@ package fr.adaming.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,12 +31,12 @@ public class LigneDeCommande implements Serializable {
 	@Column
 	private int prix;
 
-	@JsonIgnore
-	@ManyToOne
+	
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_produit")
 	private Product produit;
 	
-	@JsonIgnore
+
 	@ManyToOne
 	@JoinColumn(name="idComande")
 	private Commande commande;
@@ -125,6 +126,15 @@ public class LigneDeCommande implements Serializable {
 	 */
 	public void setProduit(Product produit) {
 		this.produit = produit;
+	}
+
+	
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
 	}
 
 	/*

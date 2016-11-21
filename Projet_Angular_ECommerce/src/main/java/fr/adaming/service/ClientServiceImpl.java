@@ -81,5 +81,10 @@ public class ClientServiceImpl implements IClientService{
 		return clientDao.SearchLigneCommandeByIdCommande(id_commande);
 	}
 
+	@Override
+	public LigneDeCommande addLc(LigneDeCommande lc) {
+		return clientDao.addLc(lc);
+	}
+
 
 }

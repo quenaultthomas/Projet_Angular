@@ -1,6 +1,8 @@
 <h2>Les details de votre commande</h2>
 
-<div>
+<input type="button" onclick="print();" value="Imprimer le document" />
+
+<div id="imprimer">
 
 	<h4>Nom : {{clientC.name}}</h4>
 	<h4>Adresse : {{clientC.adresse}}</h4>
@@ -26,6 +28,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<button ng-click="paiement()" >Payer</button>
+		<button ng-click="addCom()">Valider</button>
 	</div>
 </div>
+

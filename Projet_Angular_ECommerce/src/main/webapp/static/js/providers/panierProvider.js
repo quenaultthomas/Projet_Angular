@@ -1,4 +1,4 @@
-monApp.factory("panierProvider", function() {
+monApp.factory("panierProvider", function(clientFactory) {
 
 	var article = [];
 	var nbrArticle = 0;
@@ -83,5 +83,10 @@ monApp.factory("panierProvider", function() {
 			return price;
 		},
 		
+		ajoutLC : function(callback) {
+			for (var i = 0; i < article.length; i++) {
+			clientFactory.ajoutLC(article[i].id_p, article[i].qte, callback)
+			}
+		}		
 	}
 })
