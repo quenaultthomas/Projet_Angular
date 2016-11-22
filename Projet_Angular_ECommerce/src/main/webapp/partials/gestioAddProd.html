@@ -10,10 +10,10 @@
 		<input type="text" class="form-control"ng-model="productForm.quantite">
 		<label>Prix</label> 
 		<input type="text" class="form-control"ng-model="productForm.prix">
-		<label>Id_category</label> 
-		<output value="{{productForm.categorie.id_c}}">
-		<label>Nom_category</label> 
-		<select ng-model="productForm.categorie.nom" ng-options="y.nom for (x, y) in allCategory"></select>
+		<label>Id_category</label> <br/> 
+		<span>{{productForm.categorie.id_c}}</span><br/> 
+		<label>Nom_category</label><br/> 
+		<select ng-model="productForm.categorie" ng-options="y.nom for (x, y) in allCategory"></select>
 	</div>
 
 
