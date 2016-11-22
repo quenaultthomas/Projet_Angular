@@ -130,6 +130,19 @@ monApp
 		});
 	}
 	
+	function rechercheCommande(id_client, callback) {
+
+		$http({
+			method : 'GET',
+			url : urlWS+"ComByIdClient/"+id_client
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
+	
 	return {
 		getAllCat : getAllCat,
 		getAllProd : getAllProd,
@@ -139,5 +152,6 @@ monApp
 //		Paiement : Paiement,
 		ajoutLC:ajoutLC,
 		ajoutCom:ajoutCom,
+		rechercheCommande:rechercheCommande,
 	}
 });

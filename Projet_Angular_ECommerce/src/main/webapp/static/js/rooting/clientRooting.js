@@ -31,6 +31,11 @@ monApp.config(function($routeProvider) {
 		templateUrl : "partials/Commande.html",
 		controller : "CommandeCtrl"
 	})
+	
+	.when('/RechercheCommande', {
+		templateUrl : "partials/RechCom.html",
+		controller : "RechercheCommande"
+	})
 
 	.otherwise({
 		redirectTo : '/listeCat'

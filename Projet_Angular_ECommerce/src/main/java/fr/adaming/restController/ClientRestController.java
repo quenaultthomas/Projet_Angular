@@ -1,5 +1,6 @@
 package fr.adaming.restController;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -27,8 +28,11 @@ import fr.adaming.service.IGestionnaireService;
 public class ClientRestController {
 
 	Panier panier = new Panier();
+	
 	Map<Integer, LigneDeCommande> Article = new HashMap<Integer, LigneDeCommande>();
 
+	
+	
 	@Autowired
 	IClientService clientService;
 
@@ -81,7 +85,7 @@ public class ClientRestController {
 			LigneDeCommande ligneCommandeNew = new LigneDeCommande();
 
 			ligneCommandeNew.setPrix(prod.getPrix());
-			ligneCommandeNew.setQuantité(qte);
+			ligneCommandeNew.setQuantite(qte);
 			ligneCommandeNew.setProduit(prod);
 
 			Article.put(prod.getId_p(), ligneCommandeNew);
@@ -91,12 +95,12 @@ public class ClientRestController {
 			double coutPanier = 0;
 
 			for (LigneDeCommande ligne : Article.values()) {
-				coutPanier += ligne.getPrix() * ligne.getQuantité();
+				coutPanier += ligne.getPrix() * ligne.getQuantite();
 			}
 
 			panier.setCoutTotal(coutPanier);
 
-			
+			//panier.setArticle(Article);
 			//////////////////////////////////////////////////////////////////////////////////////////
 			int quantiteP = prod.getQuantite();
 			quantiteP = quantiteP - qte;
@@ -105,10 +109,20 @@ public class ClientRestController {
 
 			gestioService.upProduitService(prod);
 			//////////////////////////////////////////////////////////////////////////////////////////
+			List<LigneDeCommande> listePanier = new ArrayList<LigneDeCommande>();
+			for (LigneDeCommande lc : Article.values()) {
 
-//			for (LigneDeCommande lc : Article.values()) {
-//				System.out.println(lc);
-//		}
+				listePanier.add(lc);
+
+			}
+			
+			panier.setLigneCommande(listePanier);
+			System.out.println(" La liste du panier est :: ----------------- " + listePanier);
+			
+			for (LigneDeCommande lc : Article.values()) {
+				System.out.println(lc);
+		}
+			
 			
 			panier.getLigneCommande().add(ligneCommandeNew);
 			
@@ -129,6 +143,7 @@ public class ClientRestController {
 		Date date = c.getTime();
 		commande.setDateDeCommande(date);
 		
+		//panier.setArticle(Article);
 		//commande.setLigneCommandes(Article);
 		
 		for (LigneDeCommande lc : Article.values()) {
@@ -145,9 +160,18 @@ public class ClientRestController {
 		
 		commande = clientService.passerCommande(panier, cl);
 		
+		
 		return commande;
 
 		
+	}
+	
+
+	@RequestMapping(value = "/ComByIdClient/{id}", method = RequestMethod.GET, produces = "application/json")
+	public List<LigneDeCommande>  getComByIdClient(@PathVariable("id") int id) {
+		//return clientService.SearchCommandByIdClient(id);
+		 Commande com = clientService.SearchCommandByIdClient(id);
+		 return clientService.SearchLigneCommandeByIdCommande(com.getId_commande());
 	}
 
 }

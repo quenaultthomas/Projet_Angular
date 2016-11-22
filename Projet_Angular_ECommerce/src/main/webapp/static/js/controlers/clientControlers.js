@@ -68,21 +68,7 @@ monApp
 
 .controller("PanierCtrl", function($scope, clientFactory, panierProvider, $location) {
 
-	$scope.lingeCom = {
-			"prix" : "",
-			"quantite" : "",
-			"produit" : {
-					"nom" : "",
-					"descritpion" : "",
-					"prix" : "",
-					"quantité" : "",
-					"catégorie" : {
-							"id_c" : "",
-							"non" : "",
-							"decription" : "",
-					}
-			}
-	};
+	
 	
 	$scope.article = panierProvider.getProducts();
 	$scope.price = panierProvider.getPrice();
@@ -128,13 +114,15 @@ monApp
 				telephone : ""
 			}
 
+			$rootScope.clientC = $scope.clientForm;
+			
 			$scope.ajouter = function() {
 
-				clientFactory.add($scope.clientForm, function(callback) {
+				//clientFactory.add($scope.clientForm, function(callback) {
 					$location.path('/commande')
-				});
+				//});
 
-				$rootScope.clientC = $scope.clientForm;
+				
 
 			}
 
@@ -150,6 +138,23 @@ monApp
 			$scope.addCom = function() {
 				clientFactory.ajoutCom($scope.clientC, function(callback) {
 					$location.path('/commande')
+				});
+			}
+
+		})
+		
+		.controller(
+		'RechercheCommande',
+		function($rootScope, $scope, clientFactory, panierProvider, $location) {
+			$scope.id_client = undefined;
+			$scope.indice = false
+
+			$scope.recherche = function() {
+				clientFactory.rechercheCommande($scope.id_client, function(callback) {
+					if (callback != undefined && callback != "") {
+						$scope.ligneCommande = callback
+						$scope.indice = true
+					}
 				});
 			}
 

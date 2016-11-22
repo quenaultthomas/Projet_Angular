@@ -27,7 +27,7 @@ public class LigneDeCommande implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_LigneDeCommande;
 	@Column
-	private int quantité;
+	private int quantite;
 	@Column
 	private int prix;
 
@@ -51,9 +51,9 @@ public class LigneDeCommande implements Serializable {
 	 * @param quantité
 	 * @param prix
 	 */
-	public LigneDeCommande(int quantité, int prix) {
+	public LigneDeCommande(int quantite, int prix) {
 		super();
-		this.quantité = quantité;
+		this.quantite = quantite;
 		this.prix = prix;
 	}
 
@@ -62,10 +62,10 @@ public class LigneDeCommande implements Serializable {
 	 * @param quantité
 	 * @param prix
 	 */
-	public LigneDeCommande(int id_LigneDeCommande, int quantité, int prix) {
+	public LigneDeCommande(int id_LigneDeCommande, int quantite, int prix) {
 		super();
 		this.id_LigneDeCommande = id_LigneDeCommande;
-		this.quantité = quantité;
+		this.quantite = quantite;
 		this.prix = prix;
 	}
 
@@ -87,16 +87,16 @@ public class LigneDeCommande implements Serializable {
 	/**
 	 * @return the quantité
 	 */
-	public int getQuantité() {
-		return quantité;
+	public int getQuantite() {
+		return quantite;
 	}
 
 	/**
 	 * @param quantité
 	 *            the quantité to set
 	 */
-	public void setQuantité(int quantité) {
-		this.quantité = quantité;
+	public void setQuantite(int quantite) {
+		this.quantite = quantite;
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class LigneDeCommande implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return "LigneDeCommande [id_LigneDeCommande=" + id_LigneDeCommande + ", quantité=" + quantité + ", prix=" + prix
+		return "LigneDeCommande [id_LigneDeCommande=" + id_LigneDeCommande + ", quantite=" + quantite + ", prix=" + prix
 				+ "]";
 	}
 

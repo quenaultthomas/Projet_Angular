@@ -144,6 +144,11 @@ public class ClientDaoImpl implements IClientDao{
 			commande.setLigneCommandes(panier.getArticle());
 			s.persist(commande);
 			
+			for (LigneDeCommande lc : panier.getArticle().values()) {
+				System.out.println(lc);
+			}
+			
+			
 			
 			return commande;
 	}
