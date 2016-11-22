@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.adaming.model.Category;
+import fr.adaming.model.Client;
+import fr.adaming.model.Commande;
+import fr.adaming.model.LigneDeCommande;
 import fr.adaming.model.Product;
+import fr.adaming.service.IClientService;
 import fr.adaming.service.IGestionnaireService;
 
 @RestController /** Controller rest de Spring MVC*/
@@ -20,6 +24,9 @@ public class GestioRestController {
 	/** On déclare un gestionnaire service pour utiliser ces méthodes*/
 	@Autowired
 	private IGestionnaireService gestioService;
+	
+	@Autowired
+	IClientService clientService;
 
 	/** Setter du gestioService
 	 * @param gestioService the gestioService to set
@@ -107,9 +114,16 @@ public class GestioRestController {
 		
 	}
 	
+	@RequestMapping(value = "/AllCom", method = RequestMethod.GET, produces = "application/json")
+	public List<Commande>  getCom() {
+		 return clientService.SearchCommand();
+	}
 	
-	
-	
+	@RequestMapping(value = "/LigneComByIdCom/{id}", method = RequestMethod.GET, produces = "application/json")
+	public List<LigneDeCommande>  getLCbyIdCom(@PathVariable("id") int id) {
+		 
+		 return clientService.SearchLigneCommandeByIdCommande(id);
+	}
 	
 
 }

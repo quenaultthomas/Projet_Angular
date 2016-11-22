@@ -143,6 +143,35 @@ monApp.factory('gestioFactory',function($http){
 		})
 	}
 	
+/////////////////////////////////////////////////////////////////////////////////////
+	function AllCom(callback) {
+
+		$http({
+			method : 'GET',
+			url : urlWS+"AllCom",
+			
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
+	
+	function LCbyIdCom(id, callback) {
+
+		$http({
+			method : 'GET',
+			url : urlWS+"LigneComByIdCom/"+id
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
+/////////////////////////////////////////////////////////////////////////////////////
+
 			return{
 				gestioGetCatById : gestioGetCatById,
 				gestioGetAllCat : gestioGetAllCat,
@@ -154,6 +183,8 @@ monApp.factory('gestioFactory',function($http){
 				gestioAddProd : gestioAddProd,
 				gestioEditProd : gestioEditProd,
 				gestioDelProd : gestioDelProd,
+				AllCom:AllCom,
+				LCbyIdCom:LCbyIdCom,
 			}
 		
 		})

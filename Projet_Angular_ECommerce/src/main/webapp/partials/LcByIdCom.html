@@ -1,0 +1,31 @@
+
+
+<h1>Monsieur 		{{objCom.client.name}}</h1>
+<h5>Adresse : 		{{objCom.client.adresse}}</h5>
+<h5>Mail :			{{objCom.client.mail}}</h5>
+<h5>Telephone :		{{objCom.objCom.telephone}}</h5>
+<br/>
+<h5>Num Commande :	{{objCom.id_commande}}</h5>
+<h5>Date Commande :	{{objCom.dateDeCommande | date:'dd-MM-yyyy HH:mm:ss'}}</h5>
+<br/>
+<br/>
+<table class="table table-hover">
+    <tr>
+        
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix unitaire</th>
+        <th>Quantite</th>
+        <th>Prix</th>
+    </tr>
+    <tr ng-repeat="prod in LCByIdCom | filter:search">
+        <td>{{prod.produit.nom }}</td>
+        <td>{{prod.produit.description }}</td>
+        <td>{{prod.prix}}</td>
+        <td>{{prod.quantite}}</td>
+        <td>{{prod.quantite * prod.prix}}</td>
+        
+    </tr>
+</table>
+
+

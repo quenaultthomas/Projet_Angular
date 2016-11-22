@@ -1,0 +1,25 @@
+<div>
+<h1>Liste de Categories</h1>
+
+<div align="right">
+</div>
+</div>	
+<br/>
+<br/>
+<div>
+<table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Date</th>
+        <th>Nom Client</th>
+        <th>Operations</th>
+    </tr>
+    <tr ng-repeat="Com in allCom | filter:search">
+        <td>{{Com.id_commande }}</td>
+        <td>{{Com.dateDeCommande | date:'dd-MM-yyyy HH:mm:ss'}}</td>
+        <td>{{Com.client.name }}</td>
+        <td><a ng-click="trouver(Com)" class="btn btn-sm btn-warning">Liste Produits</a></td>
+        
+    </tr>
+</table>
+</div>

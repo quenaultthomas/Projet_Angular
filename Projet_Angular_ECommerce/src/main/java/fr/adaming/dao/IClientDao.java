@@ -38,5 +38,7 @@ public List<Product> SearchByAllProduits();
 	public Client SearchClientById(int id_client);
 
 	public Client SearchClientByIdCom(int id);
+
+	public List<Commande> SearchCommand();
 	
 }

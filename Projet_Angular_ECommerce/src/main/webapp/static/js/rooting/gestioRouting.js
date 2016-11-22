@@ -48,6 +48,16 @@ monApp.config(function($routeProvider) {
 		templateUrl : "partials/gestioDelProd.html",
 		controller : "gestioDelProdCtrl"
 	})
+	
+	.when('/getAllCom', {
+		templateUrl : "partials/GetAllCom.html",
+		controller : "getAllCom"
+	})
+	
+	.when('/LcByIdCom', {
+		templateUrl : "partials/LcByIdCom.html",
+		controller : "LcByIdCom"
+	})
 
 	.otherwise({
 		redirectTo : '/gestioListeCat'

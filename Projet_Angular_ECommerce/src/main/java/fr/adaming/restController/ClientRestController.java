@@ -184,4 +184,5 @@ public class ClientRestController {
 		return clientService.SearchClientByIdCom(id);
 	}
 
+	
 }

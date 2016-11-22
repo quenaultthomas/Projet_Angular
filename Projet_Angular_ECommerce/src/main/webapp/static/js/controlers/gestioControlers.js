@@ -229,6 +229,53 @@ monApp
 						$scope.allCategory = callback;
 					});
 				})
-
 				
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				.controller(
+		'getAllCom',
+		function($rootScope, $scope, gestioFactory, $location) {
+			gestioFactory.AllCom(function(callback) {
+				$scope.allCom = callback
+			});
+			$rootScope.objCom = {
+					id_commande : "",
+					dateDeCommande : "",
+					client : {
+						id_client : "",
+						name : "",
+						adresse : "",
+						mail : "",
+						telephone : ""
+					}
+				}
+
+				$scope.trouver = function(Com) {
+					$rootScope.objCom.id_commande = Com.id_commande;
+					$rootScope.objCom.DateDeCommande = Com.dateDecommande;
+					$rootScope.objCom.client = Com.client;
+					$location.path("/LcByIdCom");
+
+				}
+		})
+
+.controller(
+		'LcByIdCom',
+		function($rootScope, $scope, gestioFactory, $location) {
+
+			$scope.objCom.id_commande = $rootScope.objCom.id_commande 
+			$scope.objCom.dateDeCommande = $rootScope.objCom.dateDeCommande
+			$scope.objCom.client = $rootScope.objCom.client
+
+			gestioFactory.LCbyIdCom($scope.objCom.id_commande,
+					function(callback) {
+						$scope.LCByIdCom = callback
+					});
+
+		})
+				
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 				

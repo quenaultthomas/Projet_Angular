@@ -218,5 +218,13 @@ public class ClientDaoImpl implements IClientDao{
 		return cl;
 	}
 	
+	@Override
+	public List<Commande> SearchCommand() {
+        Session s = sf.getCurrentSession();
+		
+		Query req = s.createQuery("SELECT c FROM Commande c ");
+		
+		return req.list();
+	}
 }
 
