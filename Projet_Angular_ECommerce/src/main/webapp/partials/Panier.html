@@ -23,7 +23,7 @@
 			<tbody>
 				<tr ng-repeat="prod in article">
 					<td>{{prod.nom}}</td>
-					<td>{{prod.prix}}</td>
+					<td>{{prod.prix}} <span class="glyphicon glyphicon-euro"></span></td>
 					<td>{{prod.qte}} <a ng-click="addQte(prod)"
 						class="btn btn-sm btn-primary">+</a> | <a
 						ng-click="removeQte(prod)" class="btn btn-sm btn-danger">-</a></td>
