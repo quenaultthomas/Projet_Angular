@@ -1,0 +1,28 @@
+<h1>Modifier un produit</h1>
+
+
+<form>
+	<div class="form-group">
+		<label>Id</label> 
+		<input type="text" class="form-control"ng-model="productForm.id_p" ng-disabled="true">
+		<label>Nom</label> 
+		<input type="text" class="form-control"ng-model="productForm.nom">
+		<label>Description</label> 
+		<input type="text" class="form-control"ng-model="productForm.description">
+		<label>Quantite</label> 
+		<input type="text" class="form-control"ng-model="productForm.quantite">
+		<label>Prix</label> 
+		<input type="text" class="form-control"ng-model="productForm.prix">
+		<label>Id_category</label> 
+		<output value="{{productForm.categorie.id_c}}">
+		<label>Nom_category</label> 
+		<select ng-model="productForm.categorie.nom" ng-options="y.nom for (x, y) in allCategory"></select>
+	</div>
+
+
+	<button class="btn btn-primary" ng-click="gestioEditProd()">Valider</button>
+	<button type="reset" class="btn btn-danger">Reset</button>
+</form>
+</div>
+
+

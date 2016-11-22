@@ -16,10 +16,8 @@
 			<td>{{category.id_c }}</td>
 			<td>{{category.nom }}</td>
 			<td>{{category.description }}</td>
-			<td><input type="button" ng-click="editCat(category)"
-				class="btn btn-sm btn-warning" value="Modifier" /> <input
-				type="button" ng-click="delCat(category)" class="btn btn-danger"
-				value="supprimer" /></td>
+			<td><a ng-click="delCat(category)" class="btn btn-danger">Supprimer</a>
+		<a ng-click="editCat(category)" class="btn btn-warning">Modifier</a></td>
 		</tr>
 	</table>
 </form>

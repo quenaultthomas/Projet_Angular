@@ -24,6 +24,30 @@ monApp.config(function($routeProvider) {
 		templateUrl : "partials/gestioDelCat.html",
 		controller : "gestioDelCatCtrl"
 	})
+	
+	.when('/gestioListeProd', {
+		templateUrl : "partials/gestioGetAllProd.html",
+		controller : "gestioGetAllProdCtrl"
+			
+	}).when('/gestioGetProdById', {
+		templateUrl : "partials/gestioGetProdById.html",
+		controller : "gestioGetProdByIdCtrl"
+	})
+
+	.when('/gestioAddProd', {
+		templateUrl : "partials/gestioAddProd.html",
+		controller : "gestioAddProdCtrl"
+	})
+
+	.when('/gestioEditProd', {
+		templateUrl : "partials/gestioEditProd.html",
+		controller : "gestioEditProdCtrl"
+	})
+
+	.when('/gestioDelProd', {
+		templateUrl : "partials/gestioDelProd.html",
+		controller : "gestioDelProdCtrl"
+	})
 
 	.otherwise({
 		redirectTo : '/gestioListeCat'

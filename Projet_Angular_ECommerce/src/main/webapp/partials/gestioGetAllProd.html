@@ -1,0 +1,32 @@
+
+<h1>Liste des produits</h1>
+
+<br />
+<br />
+<form>
+	<table class="table table-hover">
+		<tr>
+			<th>Id</th>
+			<th>Nom</th>
+			<th>Description</th>
+			<th>Quantite</th>
+			<th>Prix</th>
+			<th>Id_category</th>
+			<th>Nom_category</th>
+			<th>Operations</th>
+
+		</tr>
+		<tr ng-repeat="product in allProduct">
+			<td>{{product.id_p }}</td>
+			<td>{{product.nom }}</td>
+			<td>{{product.description }}</td>
+			<td>{{product.quantite }}</td>
+			<td>{{product.prix }}</td>
+			<td>{{product.categorie.id_c }}</td>
+			<td>{{product.categorie.nom}}</td>
+			<td><a ng-click="delProd(product)" class="btn btn-danger">Supprimer</a>
+		<a ng-click="editProd(product)" class="btn btn-warning">Modifier</a></td>
+		</tr>
+	</table>
+</form>
+
