@@ -253,7 +253,7 @@ monApp
 
 				$scope.trouver = function(Com) {
 					$rootScope.objCom.id_commande = Com.id_commande;
-					$rootScope.objCom.dateDeCommande = Com.dateDecommande;
+					$rootScope.objCom.dateDeCommande = Com.dateDeCommande;
 					$rootScope.objCom.client = Com.client;
 					$location.path("/LcByIdCom");
 
