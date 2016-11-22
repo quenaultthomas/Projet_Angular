@@ -143,6 +143,32 @@ monApp
 		});
 	}
 	
+	function rechercheClient(id_client, callback) {
+
+		$http({
+			method : 'GET',
+			url : urlWS+"ClientByIdClient/"+id_client
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
+	
+	function rechercheClientByCom(id, callback) {
+
+		$http({
+			method : 'GET',
+			url : urlWS+"ClientByIdCom/"+id
+		}).success(function(response) {
+			console.log(response)
+			callback(response)
+		}).error(function(response) {
+			console.log(response)
+		});
+	}
+	
 	return {
 		getAllCat : getAllCat,
 		getAllProd : getAllProd,
@@ -153,5 +179,7 @@ monApp
 		ajoutLC:ajoutLC,
 		ajoutCom:ajoutCom,
 		rechercheCommande:rechercheCommande,
+		rechercheClient:rechercheClient,
+		rechercheClientByCom:rechercheClientByCom,
 	}
 });

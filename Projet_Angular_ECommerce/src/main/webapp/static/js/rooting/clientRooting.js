@@ -32,6 +32,11 @@ monApp.config(function($routeProvider) {
 		controller : "CommandeCtrl"
 	})
 	
+	.when('/CommandeRecapCtrl', {
+		templateUrl : "partials/CommandeRecapCtrl.html",
+		controller : "CommandeRecapCtrl"
+	})
+	
 	.when('/RechercheCommande', {
 		templateUrl : "partials/RechCom.html",
 		controller : "RechercheCommande"
