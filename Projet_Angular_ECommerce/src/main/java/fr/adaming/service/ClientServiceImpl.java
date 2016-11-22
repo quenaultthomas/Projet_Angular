@@ -86,5 +86,15 @@ public class ClientServiceImpl implements IClientService{
 		return clientDao.addLc(lc);
 	}
 
+	@Override
+	public Client SearchClientById(int id_client) {
+		return clientDao.SearchClientById(id_client);
+	}
+
+	@Override
+	public Client SearchClientByIdCom(int id) {
+		return clientDao.SearchClientByIdCom(id);
+	}
+
 
 }

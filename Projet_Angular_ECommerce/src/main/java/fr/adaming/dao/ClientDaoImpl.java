@@ -133,7 +133,7 @@ public class ClientDaoImpl implements IClientDao{
 		
 			Session s = sf.getCurrentSession();
 			
-			s.save(client);
+			s.saveOrUpdate(client);
 			
 			Commande commande = new Commande();
 			
@@ -147,8 +147,6 @@ public class ClientDaoImpl implements IClientDao{
 			for (LigneDeCommande lc : panier.getArticle().values()) {
 				System.out.println(lc);
 			}
-			
-			
 			
 			return commande;
 	}
@@ -191,10 +189,34 @@ public class ClientDaoImpl implements IClientDao{
 	public LigneDeCommande addLc(LigneDeCommande lc) {
 		Session s = sf.getCurrentSession();
 		
-		s.persist(lc);
+		s.saveOrUpdate(lc);
 		return lc;
 		
 	}
+
+	@Override
+	public Client SearchClientById(int id_client) {
+		  Session s = sf.getCurrentSession();
+			
+			Query req = s.createQuery("SELECT c FROM Client c WHERE c.id_client=:id");
+			req.setParameter("id", id_client);
+			
+			Client cl = (Client) req.uniqueResult();
+			
+			return cl;
+	}
+
+	@Override
+	public Client SearchClientByIdCom(int id) {
+        Session s = sf.getCurrentSession();
 		
+		Query req = s.createQuery("SELECT c.id_client FROM Commande c WHERE c.id_commande=:id");
+		req.setParameter("id", id);
+		
+		Client cl = (Client) req.uniqueResult();
+		
+		return cl;
+	}
+	
 }
 

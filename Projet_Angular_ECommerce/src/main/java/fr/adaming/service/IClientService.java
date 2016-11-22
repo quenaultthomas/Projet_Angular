@@ -35,4 +35,8 @@ public List<Product> SearchByAllProduits();
 	
 	public LigneDeCommande addLc(LigneDeCommande lc);
 	
+	public Client SearchClientById(int id_client);
+	
+	public Client SearchClientByIdCom(int id);
+	
 }

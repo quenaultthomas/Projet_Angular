@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 
-<h1>Modifier un Pays</h1>
+<h1>Rechercher l'état de votre commande</h1>
 
 <form>
   <div class="form-group">
@@ -14,6 +14,13 @@
 </form>
 
 <div ng-show="indice">
+<h1>Bonjour Monsieur {{client.name}}, votre commande est en cours de préparation</h1>
+<h2>Vos informations personnelles : </h2>
+<h5>Adresse : 	{{client.adresse}}</h5>
+<h5>Mail :		{{client.mail}}</h5>
+<h5>Telephone :	{{client.telephone}}</h5>
+<br/>
+<br/>
 <table class="table table-hover">
     <tr>
         

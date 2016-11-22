@@ -92,15 +92,8 @@ public class ClientRestController {
 
 			panier.getLigneCommande().add(ligneCommandeNew);
 
-			double coutPanier = 0;
+			
 
-			for (LigneDeCommande ligne : Article.values()) {
-				coutPanier += ligne.getPrix() * ligne.getQuantite();
-			}
-
-			panier.setCoutTotal(coutPanier);
-
-			//panier.setArticle(Article);
 			//////////////////////////////////////////////////////////////////////////////////////////
 			int quantiteP = prod.getQuantite();
 			quantiteP = quantiteP - qte;
@@ -110,21 +103,24 @@ public class ClientRestController {
 			gestioService.upProduitService(prod);
 			//////////////////////////////////////////////////////////////////////////////////////////
 			List<LigneDeCommande> listePanier = new ArrayList<LigneDeCommande>();
+			
 			for (LigneDeCommande lc : Article.values()) {
-
 				listePanier.add(lc);
-
 			}
-			
+		
 			panier.setLigneCommande(listePanier);
-			System.out.println(" La liste du panier est :: ----------------- " + listePanier);
-			
-			for (LigneDeCommande lc : Article.values()) {
-				System.out.println(lc);
-		}
 			
 			
-			panier.getLigneCommande().add(ligneCommandeNew);
+			double coutPanier = 0;
+
+			for (LigneDeCommande ligne : Article.values()) {
+				coutPanier += ligne.getPrix() * ligne.getQuantite();
+			}
+
+			panier.setCoutTotal(coutPanier);
+			
+			
+			
 			
 			return ligneCommandeNew;
 		} else {
@@ -143,12 +139,7 @@ public class ClientRestController {
 		Date date = c.getTime();
 		commande.setDateDeCommande(date);
 		
-		//panier.setArticle(Article);
-		//commande.setLigneCommandes(Article);
-		
-		for (LigneDeCommande lc : Article.values()) {
-			clientService.addLc(lc);
-		}
+	
 		
 		Client cl = new Client();
 		
@@ -157,10 +148,16 @@ public class ClientRestController {
 		cl.setAdresse(client.getAdresse());
 		cl.setTelephone(client.getTelephone());
 		
+		panier.setArticle(Article);
 		
 		commande = clientService.passerCommande(panier, cl);
 		
-		
+		for (LigneDeCommande lc : Article.values()) {
+			clientService.addLc(lc);
+		}
+	
+		Article.clear();
+	
 		return commande;
 
 		
@@ -170,8 +167,21 @@ public class ClientRestController {
 	@RequestMapping(value = "/ComByIdClient/{id}", method = RequestMethod.GET, produces = "application/json")
 	public List<LigneDeCommande>  getComByIdClient(@PathVariable("id") int id) {
 		//return clientService.SearchCommandByIdClient(id);
+		
 		 Commande com = clientService.SearchCommandByIdClient(id);
+		 
+		 Client cl =clientService.SearchClientById(id);
 		 return clientService.SearchLigneCommandeByIdCommande(com.getId_commande());
+	}
+	
+	@RequestMapping(value = "/ClientByIdClient/{id}", method = RequestMethod.GET, produces = "application/json")
+	public Client  getClientByIdClient(@PathVariable("id") int id) {
+		return clientService.SearchClientById(id);
+	}
+	
+	@RequestMapping(value = "/ClientByIdCom/{id}", method = RequestMethod.GET, produces = "application/json")
+	public Client  getClientByIdCom(@PathVariable("id") int id) {
+		return clientService.SearchClientByIdCom(id);
 	}
 
 }

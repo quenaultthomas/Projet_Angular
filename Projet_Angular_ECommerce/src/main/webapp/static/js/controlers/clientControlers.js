@@ -66,47 +66,44 @@ monApp
 
 		})
 
-.controller("PanierCtrl", function($scope, clientFactory, panierProvider, $location) {
+.controller("PanierCtrl",
+		function($scope, clientFactory, panierProvider, $location) {
 
-	
-	
-	$scope.article = panierProvider.getProducts();
-	$scope.price = panierProvider.getPrice();
-	$scope.nbrArticle = panierProvider.getCount();
+			$scope.article = panierProvider.getProducts();
+			$scope.price = panierProvider.getPrice();
+			$scope.nbrArticle = panierProvider.getCount();
 
-	
-	$scope.addQte = function(prod) {
-		panierProvider.addQte(prod.id_p);
-		$scope.article = panierProvider.getProducts();
-		$scope.price = panierProvider.getPrice();
-		$scope.nbrArticle = panierProvider.getCount();
-	}
-	$scope.removeQte = function(prod) {
-		panierProvider.removeQte(prod.id_p);
-		$scope.article = panierProvider.getProducts();
-		$scope.price = panierProvider.getPrice();
-		$scope.nbrArticle = panierProvider.getCount();
-	}
+			$scope.addQte = function(prod) {
+				panierProvider.addQte(prod.id_p);
+				$scope.article = panierProvider.getProducts();
+				$scope.price = panierProvider.getPrice();
+				$scope.nbrArticle = panierProvider.getCount();
+			}
+			$scope.removeQte = function(prod) {
+				panierProvider.removeQte(prod.id_p);
+				$scope.article = panierProvider.getProducts();
+				$scope.price = panierProvider.getPrice();
+				$scope.nbrArticle = panierProvider.getCount();
+			}
 
-	$scope.remove = function(prod) {
-		panierProvider.removeProduct(prod.id_p);
-		$scope.price = panierProvider.getPrice();
-		$scope.nbrArticle = panierProvider.getCount();
+			$scope.remove = function(prod) {
+				panierProvider.removeProduct(prod.id_p);
+				$scope.price = panierProvider.getPrice();
+				$scope.nbrArticle = panierProvider.getCount();
 
-	}
+			}
 
-	$scope.ajoutLC = function() {
-			panierProvider.ajoutLC(function(callback)
-					{
-						$scope.article=callback;
-					});
-			$location.path("/ajoutClient");
-	}
-})
+			$scope.ajoutLC = function() {
+				panierProvider.ajoutLC(function(callback) {
+					$scope.article = callback;
+				});
+				$location.path("/ajoutClient");
+			}
+		})
 
 .controller('ajoutClientCtrl',
 		function($rootScope, $scope, clientFactory, $location) {
-	
+
 			$scope.clientForm = {
 				name : "",
 				adresse : "",
@@ -115,14 +112,14 @@ monApp
 			}
 
 			$rootScope.clientC = $scope.clientForm;
-			
+
 			$scope.ajouter = function() {
 
-				//clientFactory.add($scope.clientForm, function(callback) {
-					$location.path('/commande')
-				//});
-
-				
+				// clientFactory.add($scope.clientForm, function(callback) {
+				$location.path('/commande');
+				// $scope.clientRecap = callback;
+				// $rootScope.clientRecap = $scope.clientRecap;
+				// });
 
 			}
 
@@ -135,27 +132,66 @@ monApp
 			$scope.article = panierProvider.getProducts();
 			$scope.clientC = $rootScope.clientC;
 
+			
+
 			$scope.addCom = function() {
 				clientFactory.ajoutCom($scope.clientC, function(callback) {
-					$location.path('/commande')
-				});
+					
+					$scope.com = {
+							id_commande : "",
+							dateDeCommande : "",
+							client : {
+								id_client : "",
+								name : "",
+								adresse : "",
+								mail : "",
+								telephone : ""
+							}
+						}
+					
+					$rootScope.clientRecap = {
+							id : "",
+							name : "",
+					}
+					
+					$scope.com = callback;
+					
+					$rootScope.clientRecap.id = $scope.com.client.id_client;
+					$rootScope.clientRecap.name = $scope.com.client.name;
+					
+					$location.path('/CommandeRecapCtrl')
+						});
+
 			}
 
 		})
-		
-		.controller(
+
+.controller(
 		'RechercheCommande',
 		function($rootScope, $scope, clientFactory, panierProvider, $location) {
 			$scope.id_client = undefined;
 			$scope.indice = false
 
 			$scope.recherche = function() {
-				clientFactory.rechercheCommande($scope.id_client, function(callback) {
+				clientFactory.rechercheCommande($scope.id_client, function(
+						callback) {
 					if (callback != undefined && callback != "") {
 						$scope.ligneCommande = callback
 						$scope.indice = true
 					}
 				});
+
+				clientFactory.rechercheClient($scope.id_client, function(
+						callback) {
+					$scope.client = callback
+				});
+
 			}
 
 		})
+
+.controller('CommandeRecapCtrl', function($rootScope, $scope, $location) {
+	$scope.clientRecap.id =$rootScope.clientRecap.id
+	$scope.clientRecap.name =$rootScope.clientRecap.name
+
+})
