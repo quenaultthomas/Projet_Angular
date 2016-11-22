@@ -16,12 +16,12 @@
 			<th>Operations</th>
 
 		</tr>
-		<tr ng-repeat="product in allProduct">
+		<tr ng-repeat="product in allProduct | filter:search">
 			<td>{{product.id_p }}</td>
 			<td>{{product.nom }}</td>
 			<td>{{product.description }}</td>
 			<td>{{product.quantite }}</td>
-			<td>{{product.prix }}</td>
+			<td>{{product.prix }} <span class="glyphicon glyphicon-euro"></span></td>
 			<td>{{product.categorie.id_c }}</td>
 			<td>{{product.categorie.nom}}</td>
 			<td><a ng-click="delProd(product)" class="btn btn-danger">Supprimer</a>

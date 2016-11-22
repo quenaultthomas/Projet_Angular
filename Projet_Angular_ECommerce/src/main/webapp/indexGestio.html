@@ -30,22 +30,35 @@
 
 </head>
 <body ng-app="monApp">
+
 	<nav class="navbar navbar-inverse">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="#">Accueil</a></li>
-			<li role="presentation"><a href="#/gestioListeCat">Liste des
-					categories</a></li>
-			<li role="presentation"><a href="#/gestioAddCat">Ajouter une
-					categorie</a></li>
-			<li role="presentation"><a href="#/gestioAddProd">Ajouter un
-					produit</a></li>
-			<li role="presentation"><a href="#/gestioListeProd">Liste
-					des produits</a></li>
-			<li role="presentation"><a href="#/getAllCom">Recherche des
-					commandes</a></li>
-			<li role="presentation" class="alert-danger"><a
-				href="index.html">Vue Client</a></li>
-		</ul>
+		<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 ">
+			<ul class="nav nav-pills">
+				<li role="presentation" class="active"><a href="#">Accueil</a></li>
+				<li role="presentation"><a href="#/gestioListeCat">Liste
+						des categories</a></li>
+				<li role="presentation"><a href="#/gestioAddCat">Ajouter
+						une categorie</a></li>
+				<li role="presentation"><a href="#/gestioAddProd">Ajouter
+						un produit</a></li>
+				<li role="presentation"><a href="#/gestioListeProd">Liste
+						des produits</a></li>
+				<li role="presentation"><a href="#/getAllCom">Recherche des
+						commandes</a></li>
+				<li role="presentation" class="alert-danger"><a
+					href="index.html">Vue Client</a></li>
+			</ul>
+		</div>
+		<div align="right" class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<div class="form-group">
+				<div class=" col-lg-8" style="margin-top: 5px">
+					<form>
+						<input type="text" class="form-control" placeholder="Search"
+							ng-model="search">
+					</form>
+				</div>
+			</div>
+		</div>
 	</nav>
 
 	<div class="container">

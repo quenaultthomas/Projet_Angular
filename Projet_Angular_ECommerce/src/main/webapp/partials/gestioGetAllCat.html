@@ -12,7 +12,7 @@
 			<th>Operations</th>
 
 		</tr>
-		<tr ng-repeat="category in allCategory">
+		<tr ng-repeat="category in allCategory | filter:search">
 			<td>{{category.id_c }}</td>
 			<td>{{category.nom }}</td>
 			<td>{{category.description }}</td>
