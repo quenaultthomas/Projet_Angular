@@ -66,6 +66,9 @@ monApp.factory("panierProvider", function(clientFactory) {
 			return article;
 		},
 		
+		viderPanier : function() {
+			article=[];
+		},
 		
 		getCount : function() {
 			var nbrArticle = 0;

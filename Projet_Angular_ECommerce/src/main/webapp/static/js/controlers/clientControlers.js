@@ -159,6 +159,8 @@ monApp
 					$rootScope.clientRecap.id = $scope.com.client.id_client;
 					$rootScope.clientRecap.name = $scope.com.client.name;
 					
+					panierProvider.viderPanier();
+					
 					$location.path('/CommandeRecapCtrl')
 						});
 
